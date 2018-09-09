@@ -4,7 +4,6 @@ cask 'pdftk' do
 
   url "https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk_server-#{version}-mac_osx-10.6-setup.pkg"
   homepage 'http://www.pdflabs.com/tools/pdftk-server/'
-  license :unknown
 
   preflight do
     system "pkgutil --expand #{staged_path}/pdftk_server-#{version}-mac_osx-10.6-setup.pkg #{staged_path}/expand"
@@ -33,5 +32,9 @@ cask 'pdftk' do
     system '/bin/rm', "#{brew_prefix}/share/man/man1/pdftk.1"
     system 'sudo', '/bin/rmdir', '/opt/pdflabs/pdftk'
     system 'sudo', '/bin/rmdir', '/opt/pdflabs'
+  end
+
+  caveats do
+    license 'https://www.pdflabs.com/docs/pdftk-license/'
   end
 end
