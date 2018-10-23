@@ -28,8 +28,7 @@ cask 'pdftk' do
   uninstall :pkgutil => 'com.pdflabs.pdftkThePdfToolkit.pdftk.pkg'
 
   uninstall_postflight do
-    brew_prefix = `brew --prefix`.chomp
-    system '/bin/rm', "#{brew_prefix}/share/man/man1/pdftk.1"
+    system '/bin/rm', "#{HOMEBREW_PREFIX}/share/man/man1/pdftk.1"
     system 'sudo', '/bin/rmdir', '/opt/pdflabs/pdftk'
     system 'sudo', '/bin/rmdir', '/opt/pdflabs'
   end
