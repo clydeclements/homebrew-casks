@@ -20,9 +20,8 @@ cask 'pdftk' do
   binary '/opt/pdflabs/pdftk/bin/pdftk'
 
   postflight do
-    brew_prefix = `brew --prefix`.chomp
     system '/bin/ln', '-nsf', '--', '/opt/pdflabs/pdftk/man/pdftk.1',
-      "#{brew_prefix}/share/man/man1/pdftk.1"
+      "#{HOMEBREW_PREFIX}/share/man/man1/pdftk.1"
   end
 
   uninstall :pkgutil => 'com.pdflabs.pdftkThePdfToolkit.pdftk.pkg'
